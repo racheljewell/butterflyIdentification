@@ -25,7 +25,19 @@ def load_testing_data():
     # Load the data. Use ',' as the delimiter
     data = np.loadtxt(data_file_path,dtype=str,  delimiter=',')
     img_file_names = data[1:, 0]
-    labels = data[1:, 1:]
+    labels_str = data[1:, 1:]
+
+    # print(labels_str[0,0])
+
+    label_dict = {}
+    labels = []
+    index = 0
+
+    for label in labels_str:
+        if label[0] not in label_dict:
+            label_dict[label[0]] = index
+            index += 1
+        labels.append([label_dict[label[0]]])
 
 
     images = []
@@ -35,4 +47,12 @@ def load_testing_data():
         images.append(image)
 
     
-    return labels, images
+    return labels, images, label_dict
+
+def get_key(val, dict):
+   
+    for key, value in dict.items():
+        if val == value:
+            return key
+ 
+    return "key doesn't exist"
