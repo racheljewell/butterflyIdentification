@@ -89,7 +89,13 @@ def get_key(val, dict):
  
     return "key doesn't exist"
 
+def get_val(k, dict):
 
+    for key, value in dict.items():
+        if k == key:
+            return value
+        
+    return "value doesn't exist"
 """
     Title: Butterfly - GrabCut + DenseNet(CNN)
     Author: Pacawat Panjabud
