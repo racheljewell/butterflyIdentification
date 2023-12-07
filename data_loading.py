@@ -89,7 +89,14 @@ def get_key(val, dict):
  
     return "key doesn't exist"
 
-# Borrowed from :https://www.kaggle.com/code/pacawat/butterfly-grabcut-densenet-cnn
+
+"""
+    Title: Butterfly - GrabCut + DenseNet(CNN)
+    Author: Pacawat Panjabud
+    Date: 8/2023
+    Code version: 5.0
+    Availability: https://www.kaggle.com/code/pacawat/butterfly-grabcut-densenet-cnn
+"""
 def segmentation( RGB_image ):
     mask = np.zeros(RGB_image.shape[:2],np.uint8)
     bgdModel = np.zeros((1,65),np.float64)
