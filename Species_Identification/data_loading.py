@@ -5,10 +5,13 @@ import cv2 as cv
 
 def load_testing_data():
     """
-    Reads file names and labels from "train/Training_set.csv.
+    Reads file names and labels from the "./train/" directory
+    Note: You must have the unzipped dataset containing the images and csv file in this directory for this function to work.
     Returns:
-        labels: an np array containing the butterfly species labels
+        labels: an np array containing the butterfly species labels as integers
         images: a list of the images; for this data set images are (224,224,3)
+        images_segmented: a list of the segmented images, shape (224,224,3), with the backgroudn removed from the image
+        label_dict: a dictionary that maps the integer value for the butterfly specie to the string
     """
 
     # Get the absolute path of the script's directory
@@ -41,25 +44,28 @@ def load_testing_data():
 
 
     images = []
+    images_segmented = []
     for img_file_name in img_file_names:
         img_file_path = os.path.join(current_directory, 'train', img_file_name)
         image = cv.imread(img_file_path)
         images.append(image)
+        images_segmented.append(segmentation(image))
 
-    folder = os.path.join(current_directory, 'segmented')
-    images_segmented = []
-    # for filename in os.listdir(folder):
-    #     img = cv.imread(os.path.join(folder, filename))
-    #     if img is not None:
-    #         images_segmented.append(img)
-    for i in range(6499):
-        img_name = "img_" + str(i) + ".jpg"
-        img_file_path = os.path.join(folder, img_name)
-        image = cv.imread(img_file_path)
-        images_segmented.append(image)
+    # Following code is for use if image segmentation has been performed in the data_preprocessing jupyter notebook
+    # folder = os.path.join(current_directory, 'segmented')
+    
+    # # If images have been previuosly se
+    # for i in range(6499):
+    #     img_name = "img_" + str(i) + ".jpg"
+    #     img_file_path = os.path.join(folder, img_name)
+    #     image = cv.imread(img_file_path)
+    #     images_segmented.append(image)
             
     return labels, images, images_segmented, label_dict
 
+"""
+    A function that can be used to save segmented images.
+"""
 def save_data(images):
     # Get the absolute path of the script's directory
     current_directory = os.path.abspath(os.path.dirname(__file__))
@@ -80,7 +86,9 @@ def save_data(images):
         
     return count
 
-
+"""
+    Gets the integer key associate with a butterfly species from the dictionary.
+"""
 def get_key(val, dict):
    
     for key, value in dict.items():
@@ -89,6 +97,9 @@ def get_key(val, dict):
  
     return "key doesn't exist"
 
+"""
+    Gets the string butterfly species value from the integer key
+"""
 def get_val(k, dict):
 
     for key, value in dict.items():
@@ -96,12 +107,14 @@ def get_val(k, dict):
             return value
         
     return "value doesn't exist"
+
 """
     Title: Butterfly - GrabCut + DenseNet(CNN)
     Author: Pacawat Panjabud
     Date: 8/2023
     Code version: 5.0
     Availability: https://www.kaggle.com/code/pacawat/butterfly-grabcut-densenet-cnn
+    Description: This code removes the backfrom from the butterfly images
 """
 def segmentation( RGB_image ):
     mask = np.zeros(RGB_image.shape[:2],np.uint8)
