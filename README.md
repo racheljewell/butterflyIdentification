@@ -1,5 +1,7 @@
 # butterflyIdentification
 
+### By: Rachel Jewell & Sarah Davidson
+
 ## File list
 
 This repository contains the following files and folders:
