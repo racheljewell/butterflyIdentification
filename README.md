@@ -38,6 +38,12 @@ The required datasets can be found and downloaded at the locations listed below:
     Code version: 1.0
     Availability: https://www.kaggle.com/datasets/phucthaiv02/butterfly-image-classification
 
+    Title: Random Image Sample Dataset
+    Author: Pankaj Kumar
+    Date: 12/2022
+    Code version: 1.0
+    Availability: https://www.kaggle.com/datasets/pankajkumar2002/random-image-sample-dataset/
+
 ## Running the code
 
 The code can be run by following the steps in the Jupyter Notebooks.
