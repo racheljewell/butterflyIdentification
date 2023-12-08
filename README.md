@@ -12,6 +12,15 @@ This repository contains the following files and folders:
     - `Species_CNN.ipynb`: This file is a Jupyter Notebook containing the source code where the data is split and the CNN is built, trained, and evaluated
     - `cnn_models`: a folder that holds saved models
         - `finalModel`: the final, and most accurate model
+- detect_butterfly_model: This Juppter Notebook containes the source code and tests computing butterfly detection
+- Final Reports: This repo contains 2 final reports
+      - `Species_Identification_Report.pdf`: This report is done by Rachel detailing her work on species classification
+      - `DetectButterfliesReport.pdf`: This report is done by Sarah detailing her work on butterfly detection
+              -NOTE: The report reads in a dataset called "notbtterfly" and the dataset on main is named "notbutterfly" but they are the same dataset. Sarah had to delete the
+                      dataset and re-upload it after dealing with a bug
+  
+      
+  
 
 ## Setting up the environment
 
