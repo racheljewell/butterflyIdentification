@@ -1,4 +1,4 @@
-# butterflyIdentification
+# Butterfly Identification Machine Learning Model
 
 ### By: Rachel Jewell & Sarah Davidson
 
